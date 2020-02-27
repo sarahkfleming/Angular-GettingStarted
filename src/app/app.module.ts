@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { ProductListComponent } from './products/product-list.component';
@@ -12,7 +13,8 @@ import { ProductListComponent } from './products/product-list.component';
   ],
   // Imports below is where you bring in any external modules that your app needs
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   // Bootstrap below lists the starting component for the application
   bootstrap: [AppComponent]
