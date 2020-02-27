@@ -43,7 +43,7 @@
                                  [style.margin.px]='imageMargin'>
                         </td>
                         <td>{{ product.productName }}</td>
-                        <td>{{ product.productCode | lowercase }}</td>
+                        <td>{{ product.productCode | lowercase | convertToSpaces: '-' }}</td>
                         <td>{{ product.releaseDate }}</td>
                         <!-- The numbers to the left of symbol indicate the following:
                         1 = number of digits you want displayed to the left of the decimal point
