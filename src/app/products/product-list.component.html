@@ -51,7 +51,8 @@
                         2 = number of minimum digits you want displayed to the right of the decimal point
                         -2 = maximum number of digits to dispkay after the decimal point -->
                         <td>{{ product.price | currency:'USD':'symbol':'1.2-2' }}</td>
-                        <td><pm-star [rating]='product.starRating'></pm-star></td>
+                        <td><pm-star [rating]='product.starRating'
+                            (ratingClicked)='onRatingClicked($event)'></pm-star></td>
                     </tr>
                 </tbody>
             </table>
