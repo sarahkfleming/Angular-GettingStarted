@@ -1,41 +1,34 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { ProductListComponent } from './products/product-list.component';
-import { ConvertToSpacesPipe } from './shared/convert-to-spaces.pipe';
-import { StarComponent } from './shared/star.component';
-import { ProductDetailComponent } from './products/product-detail.component';
 import { WelcomeComponent } from './home/welcome.component';
-import { ProductDetailGuard } from './products/product-detail.guard';
+import { ProductModule } from './products/product.module';
 
 @NgModule({
-  // A component can only belong to one Angular module
+  /* A component can only belong to only one Angular module
+   Only declare components, directives, and pipes (CDPs) that belong to this module
+   By default, CDPs are private to the module using them. They cannot be shared between modules
+   To share another module's CDPs, they must be exported from their module, and then their module can be imported  */
   declarations: [
     AppComponent,
-    ProductListComponent,
-    ConvertToSpacesPipe,
-    StarComponent,
-    ProductDetailComponent,
     WelcomeComponent
   ],
   // Imports below is where you bring in any external modules that your app needs
   imports: [
+    // AppModule normally imports BrowserModule
     BrowserModule,
-    FormsModule,
     HttpClientModule,
     RouterModule.forRoot( [
-      { path: 'products', component: ProductListComponent },
-      { path: 'products/:id', canActivate: [ProductDetailGuard], component: ProductDetailComponent },
       { path: 'welcome', component: WelcomeComponent },
       { path: '', component: WelcomeComponent },
       { path: '**', redirectTo: 'welcome', pathMatch: 'full' }
-    ])
+    ]),
+    ProductModule
   ],
-  // Bootstrap below lists the starting component for the application
+  // Bootstrap below lists the starting component for the application. It is ONLY used in the main AppModule
   bootstrap: [AppComponent]
 })
 export class AppModule { }
